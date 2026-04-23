@@ -85,7 +85,7 @@ jobs:
 
       - name: Clone protobuf (sibling dependency)
         run: |
-          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/protocolbuffers/protobuf.git
+          git clone --quiet -n --depth=1 --filter=tree:0 --branch v3.21.12 https://github.com/protocolbuffers/protobuf.git
           cd protobuf
           git sparse-checkout set --no-cone objectivec
           git checkout
