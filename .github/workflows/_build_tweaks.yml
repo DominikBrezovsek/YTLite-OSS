@@ -80,6 +80,16 @@ jobs:
         with:
           path: YTLiteSrc
 
+      - name: Clone YouTubeHeader (sibling dependency)
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+
+      - name: Clone protobuf (sibling dependency)
+        run: |
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/protocolbuffers/protobuf.git
+          cd protobuf
+          git sparse-checkout set --no-cone objectivec
+          git checkout
+
       - name: Build YouTube Plus from source
         run: |
           cd YTLiteSrc && make clean package DEBUG=0 FINALPACKAGE=1
